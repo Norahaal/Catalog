@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<h1 align="center">Electronics</h1>
+		</div>
+	</div>
+
+
+
+	<div class="row" style=" padding-top: 50px; ">
+    <div class="col-sm-4" ">
+    	<h2>Electronics cataogaries</h2>
+	    	<div style="background-color:pink;">
+	    	{% for electronic in electronics %}
+				<a href = "{{url_for('showItems', electronic_id = electronic.id)}}">
+					<h3>{{electronic.name}}</h3>
+				</a>
+			{% endfor %}
+		</div>
+    </div>
+    
+    <div class="col-sm-8" style="background-color:#ffff; padding-left: 30px; ">
+    	<h2>Items</h2>
+    	{% for item in items %}
+			<a href = "{{url_for('showOneItem', electronic_id = item.electronic_id, item_id=item.id)}}">
+				<h3>{{item.name}}</h3>
+			</a>
+		{% endfor %}
+    </div>
+
+  </div>
+
+	
+{% endblock %}

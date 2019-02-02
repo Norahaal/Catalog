@@ -1,0 +1,57 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<h1 align="center">Electronics</h1>
+		</div>
+	</div>
+
+	<div class="row" style=" padding-top: 50px; ">
+    <div class="col-sm-4" >
+    	<h2>Electronics cataogaries</h2>
+	    	<div style="background-color:pink;padding:">
+	    	{% for electronic in electronics %}
+				<a href = "{{url_for('showItems', electronic_id = electronic.id)}}">
+			        			        
+			        	{% if (e == electronic) %}
+ 							<h3 style="background-color:#f48fb1; text-align: center; padding: 20px; ">{{electronic.name}}</h3>
+ 						{% else %}
+ 							<h3 style="text-align: center;padding: 20px;">{{electronic.name}}</h3>
+ 						{% endif %}
+				</a>
+			{% endfor %}
+		</div>
+    </div>
+    
+    <div class="col-sm-8" style="background-color:#ffff; padding-left: 30px; ">
+    	<a href = "{{url_for('showItems', electronic_id = e.id)}}">
+    		<h2>{{e.name}} / {{item.name}}</h2>
+    	</a>
+		<h3>DESCRIPTION : {{item.description}}</h3>
+		<h3>PRICE : {{item.price}}</h3>
+		<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<a href="{{url_for('editItem', electronic_id=item.electronic.id,item_id=item.id )}}">
+				<button class="btn btn-default" id="new-electronic">
+					<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>Edit item
+				</button>
+			</a>
+			<a href="{{url_for('deleteItem', electronic_id=item.electronic.id, item_id=item.id )}}">
+				<button class="btn btn-default" id="new-electronic">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete item
+				</button>
+			</a>
+		</div>
+    </div>
+
+  </div>
+
+{% endblock %}
+

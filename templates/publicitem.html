@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	
+
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<h1 align="center">Electronics</h1>
+		</div>
+	</div>
+
+
+
+	<div class="row" style=" padding-top: 50px; ">
+    <div class="col-sm-4" ">
+    	<h2>Electronics cataogaries</h2>
+	    	<div style="background-color:pink; text-align: center;">
+	    	{% for electronic in electronics %}
+				<a href = "{{url_for('showItems', electronic_id = electronic.id)}}">
+			        			        
+			        	{% if (e == electronic) %}
+ 							<h3 style="background-color:#f48fb1;padding: 15px;">{{electronic.name}}</h3>
+ 						{% else %}
+ 							<h3 style="padding: 15px;">{{electronic.name}}</h3>
+ 						{% endif %}
+				</a>
+			{% endfor %}
+		</div>
+    </div>
+    
+    <div class="col-sm-8" style="background-color:#ffff; padding-left: 30px; ">
+    	<a href = "{{url_for('showItems', electronic_id = e.id)}}">
+    		<h2>{{e.name}} / {{item.name}}</h2>
+    	</a>
+		<h3>DESCRIPTION : {{item.description}}</h3>
+		<h3>PRICE : {{item.price}}</h3>
+    </div>
+
+  </div>
+{% endblock %}
